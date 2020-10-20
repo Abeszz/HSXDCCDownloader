@@ -64,3 +64,4 @@ D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDown
 D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDownloader\obj\Debug\HSXDCCDownloader.csproj.CopyComplete
 D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDownloader\obj\Debug\HSXDCCDownloader.exe
 D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDownloader\obj\Debug\HSXDCCDownloader.pdb
+D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDownloader\obj\Debug\HSXDCCDownloader.csprojAssemblyReference.cache

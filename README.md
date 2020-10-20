@@ -22,3 +22,4 @@
 # Updates
  - Added Directory settings
  - Auto creates folder for Animes in selected directory
+ - Improved Search Algorithm

@@ -8,6 +8,8 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace HSXDCCDownloader
 {
@@ -31,7 +33,6 @@ namespace HSXDCCDownloader
             irc.DccClient.OnDccEvent += OnDccEvent;
 
             jikan = new Jikan();
-
 
             InitializeComponent();
 
@@ -148,14 +149,25 @@ namespace HSXDCCDownloader
             int index = this.AnimeBox.IndexFromPoint(e.Location);
             if (index != ListBox.NoMatches)
             {
-                IEnumerable<HorribleSubsFetcher.Model.Pack> hp = await GetPacklist(SelectedShowName);
+                EnableDownloadBox();
 
-                if (hp != null)
+                IEnumerable<HorribleSubsFetcher.Model.Pack> hp = await GetPacklist(SelectedShowName);
+                if (hp.Any())
                 {
-                    EnableDownloadBox();
                     foreach (var p in hp)
                     {
                         DownloadBox.Rows.Add(false, p.Filename, GetResolution(p.Filename, p.Bot), p.Size + "M", "", p.ToString());
+                    }
+                }
+                else
+                {
+                    IEnumerable<HorribleSubsFetcher.Model.Pack> hp2 = await GetPacklist(RemoveSymbols(SelectedShowName));
+                    if (hp2.Any())
+                    {
+                        foreach (var p2 in hp2)
+                        {
+                            DownloadBox.Rows.Add(false, p2.Filename, GetResolution(p2.Filename, p2.Bot), p2.Size + "M", "", p2.ToString());
+                        }
                     }
                 }
             }
@@ -169,9 +181,13 @@ namespace HSXDCCDownloader
             var tokenSource = new CancellationTokenSource();
 
             IEnumerable<HorribleSubsFetcher.Model.Pack> packList = await fetcher.FindPacksAsync(a, tokenSource.Token);
-
+            
             return packList;
+        }
 
+        private string RemoveSymbols(string s)
+        {
+            return Regex.Replace(s, "[^0-9a-zA-Z, ]", "");
         }
 
         private string GetResolution(string f, string b)

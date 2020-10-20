@@ -1,7 +1,7 @@
 # HSXDCCDownloader
  A HorribleSubs XDCC Downloader interface.
 
-# Alpha version
+# Work in Progress
  This is first working version of the program. It does not do any error handling and is solely created for my own purpose. If you would like to use it, you can still use it. Just try not to break it :)
 
 # Functions / flow
@@ -19,5 +19,6 @@
  - SimpleIRCLib (IRC library for connection and downloads)
  - HorribleSubsFetcher (Fetch data from the packlist site)
 
-# TO-DO
- For now, let's chill.
+* Updates
+ - Added Directory settings
+ - Auto creates folder for Animes in selected directory

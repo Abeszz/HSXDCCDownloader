@@ -58,6 +58,7 @@ D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDown
 D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDownloader\bin\Release\System.Text.Json.xml
 D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDownloader\bin\Release\System.Threading.Tasks.Extensions.xml
 D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDownloader\bin\Release\System.ValueTuple.xml
+D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDownloader\obj\Release\HSXDCCDownloader.csprojAssemblyReference.cache
 D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDownloader\obj\Release\HSXDCCDownloader.HSXDCCDownloader.resources
 D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDownloader\obj\Release\HSXDCCDownloader.Properties.Resources.resources
 D:\#Projects\HSXDCCDownloader\HSXDCCDownloaderSource\HSXDCCDownloader\HSXDCCDownloader\obj\Release\HSXDCCDownloader.csproj.GenerateResource.cache

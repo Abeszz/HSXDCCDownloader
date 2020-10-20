@@ -22,9 +22,8 @@ namespace HSXDCCDownloader
         public string username = "HSXDCCbotOhYeah" + new Random().Next(1, 9999).ToString();
         public string channel = "#horriblesubs";
 
-        public string downloadDirectory;
-
         private List<string> DownloadQueue;
+        private string SelectedShowName;
 
         public HSXDCCDownloader()
         {
@@ -33,12 +32,10 @@ namespace HSXDCCDownloader
 
             jikan = new Jikan();
 
-            downloadDirectory = Directory.GetCurrentDirectory();
 
             InitializeComponent();
 
             AnimeBox.MouseDoubleClick += new MouseEventHandler(AnimeBoxDoubleClick);
-
 
         }
 
@@ -85,8 +82,8 @@ namespace HSXDCCDownloader
         {
             if (irc.IsClientRunning())
             {
-                irc.StopClient();
                 irc.StopXDCCDownload();
+                irc.StopClient();
             }
         }
 
@@ -95,15 +92,28 @@ namespace HSXDCCDownloader
             DebugLabel.Text = s;
         }
 
+        private string GetDirectory()
+        {
+            if (Properties.Settings.Default.Directory.ToString() == "")
+            {
+                return Directory.GetCurrentDirectory() + "\\Downloads";
+            }
+            else
+            {
+                return Properties.Settings.Default.Directory.ToString();
+            }
+        }
+
         private void FileButton_Click(object sender, EventArgs e)
         {
             DialogResult result = OpenFolderDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
                 string newDownloadDirectory = OpenFolderDialog.SelectedPath;
-                downloadDirectory = newDownloadDirectory;
-                irc.SetCustomDownloadDir(newDownloadDirectory);
-                WriteDebugLabel("Set to " + downloadDirectory);
+                Properties.Settings.Default.Directory = newDownloadDirectory;
+                Properties.Settings.Default.Save();
+
+                WriteDebugLabel("File set");
             }
         }
 
@@ -131,12 +141,14 @@ namespace HSXDCCDownloader
 
         private async void AnimeBoxDoubleClick(object sender, MouseEventArgs e)
         {
-            WriteDebugLabel("Displaying");
+            WriteDebugLabel("Displaying packs");
+
+            SelectedShowName = AnimeBox.SelectedItem.ToString();
 
             int index = this.AnimeBox.IndexFromPoint(e.Location);
             if (index != ListBox.NoMatches)
             {
-                IEnumerable<HorribleSubsFetcher.Model.Pack> hp = await GetPacklist(AnimeBox.SelectedItem.ToString());
+                IEnumerable<HorribleSubsFetcher.Model.Pack> hp = await GetPacklist(SelectedShowName);
 
                 if (hp != null)
                 {
@@ -228,7 +240,8 @@ namespace HSXDCCDownloader
             {
                 if (q != "Completed")
                 {
-                    Console.WriteLine("check qu");
+                    Console.WriteLine(GetDirectory());
+                    irc.SetCustomDownloadDir(GetDirectory() + "\\" + SelectedShowName);
                     irc.SendMessageToChannel(q, channel);
                     break;
                 }

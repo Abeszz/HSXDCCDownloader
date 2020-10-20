@@ -19,6 +19,6 @@
  - SimpleIRCLib (IRC library for connection and downloads)
  - HorribleSubsFetcher (Fetch data from the packlist site)
 
-* Updates
+# Updates
  - Added Directory settings
  - Auto creates folder for Animes in selected directory

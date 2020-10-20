@@ -20,4 +20,4 @@
  - HorribleSubsFetcher (Fetch data from the packlist site)
 
 # TO-DO
-- For now, let's chill.
+ For now, let's chill.

@@ -20,4 +20,4 @@
  - HorribleSubsFetcher (Fetch data from the packlist site)
 
 # TO-DO
- - Add file directory configuration
+- For now, let's chill.
